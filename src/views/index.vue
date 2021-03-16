@@ -2,16 +2,16 @@
   <div id="index" :class="{ adminCssStyle: $route.path.includes('admin') }">
     <div class="moon" v-if="!$route.path.includes('admin')&&!$route.path.includes('login')"></div>
     <Header
-      v-if="!$route.path.includes('admin')"
+      v-if="!$route.path.includes('article1')"
       @click="changeBG"
       class="header active"
     />
-    <keep-alive exclude="detail,profile">
+    <keep-alive exclude="detail,profile,article,home,articlePublish,myArticle">
       <router-view :class="{ router_content: $route.name !== 'home'&&!$route.path.includes('login') }" />
     </keep-alive>
     <Loading class="LoadingStyle" v-show="LoadingShow" />
     <Tab-contorle />
-    <Footer v-if="!$route.path.includes('admin')&&!$route.path.includes('login')&&!$route.path.includes('register')" />
+    <Footer v-if="!$route.path.includes('artConfig')&&!$route.path.includes('login')&&!$route.path.includes('register')" />
   </div>
 </template>
 <script lang="ts">
@@ -57,13 +57,13 @@ html {
   // overflow: hidden;
 }
 #index {
-  height: 100%;
+  // height: 100%;
   display: flex;
   flex-direction: column;
   .moon,
   .night {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
     position: fixed;
     left: 0;
@@ -91,7 +91,7 @@ html {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 9999;
     transition: all 0.6s;
     background: linear-gradient(#11659a,#5698c3);
 

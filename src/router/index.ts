@@ -1,19 +1,20 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
-
+import articlePublish from "../views/artConfig/articlePublish.vue"
+import MyArticle from "../views/MyArticle.vue"
+import Article from "../components/HomeComponents/Card.vue"
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     redirect: "/article",
   },
   {
     path: "/article",
-    name: "card",
-    component: () => import("../components/HomeComponents/Card.vue"),
+    name: "article",
+    component: Article
   },
   {
     path: "/login",
@@ -24,8 +25,9 @@ const routes: Array<RouteConfig> = [
     component: () => import("../views/Register.vue"),
   },
   {
-    path: "/admin/articlePublish",
-    component: () => import("../views/admin/articlePublish.vue"),
+    path: "/artConfig/articlePublish",
+    name:"articlePublish",
+    component: articlePublish
   },
   {
     path: "/detail/:id",
@@ -40,7 +42,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/myArticle",
     name: "myArticle",
-    component: () => import("../views/MyArticle.vue"),
+    component: MyArticle
   },
 ];
 

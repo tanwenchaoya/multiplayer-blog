@@ -43,7 +43,8 @@ export default class Register extends Vue {
 <style lang="scss" scoped>
 .register_container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
   background-image: url("../assets/images/bg4.jpg");
   background-size: cover;
   display: flex;
@@ -51,7 +52,7 @@ export default class Register extends Vue {
   align-items: center;
   .register_box {
     width: 35%;
-    height: 45%;
+    // height: 45%;
     min-height: 430px;
     min-width: 350px;
     background: #f7f7f7;

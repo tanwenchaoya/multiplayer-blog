@@ -3,6 +3,8 @@ export const registerUser = (data: {}) => NetWork.post("/user/register", data);
 export const sendEmailCode = (data: {}) => NetWork.get("/user/emailCode", data);
 export const sendPhoneCode = (data: {}) => NetWork.get("/phoneCode", data);
 export const loginUser = (data: {}) => NetWork.post("/user/login", data);
+export const getUserArticle = (data: {}) =>
+  NetWork.post("/page/getUserArticle", data);
 
 export const getImageCode = (data: any) =>
   NetWork.get(`/user/ImageCode?t=${data}`);

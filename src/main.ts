@@ -10,7 +10,6 @@ import "./assets/iconfont3/iconfont.css";
 import "./assets/iconfont4/iconfont.css";
 import "element-ui/lib/theme-chalk/index.css";
 import "./assets/iconfont5/iconfont.css";
-Vue.config.productionTip = false;
 
 new Vue({
   router,

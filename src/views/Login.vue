@@ -80,9 +80,9 @@ export default class Login extends Vue {
       callback(new Error("请输入用户名"));
     } else if (emailReg.test(value)) {
       this.loginData.email = this.loginData.username;
-      this.loginData.username = "";
+      // this.loginData.username = "";
       this.loginData.registerType = "email";
-      callback(new Error(""));
+      callback();
     } else if (normalReg.test(value)) {
       this.loginData.registerType = "normal";
       callback();
@@ -160,7 +160,7 @@ export default class Login extends Vue {
 <style lang="scss" scoped>
 .login_container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-image: url("../assets/images/bg4.jpg");
   background-size: cover;
   display: flex;

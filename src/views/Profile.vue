@@ -1,6 +1,6 @@
 <template>
  <div class="myInfo">
-            <div v-if="!username" style="text-align:center;padding-top:8rem;">
+            <div v-if="!username" class="no-login">
               糟糕，您还没有登陆检测不到信息! ~§(*￣▽￣*)§~
             </div>
             <div v-if="username"  class="SuccessInfo">
@@ -124,6 +124,13 @@ import { PostMessage } from '../components/NetWork/request'
           margin: 6rem auto ;
           position: relative;
           z-index: 5;
+          .no-login{
+             width: 100%;
+    height: 83vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+          }
           .SuccessInfo {
             img {
               width: 8rem;

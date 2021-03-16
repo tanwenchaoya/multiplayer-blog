@@ -51,13 +51,13 @@
             <!-- 搜索框区 -->
             <div class="search">
               <input placeholder="输入文章关键词搜索.." type="text" v-model="likeSearch" />
-              <button class="search-btn" @click="searchLike">search</button>
+              <button class="search-btn" @click="searchLike">搜索</button>
             </div>
             <!-- 分类区 -->
             <div class="article-categroy">
               <div class="title">
                 <Icon type="ios-aperture-outline" /> 文章分类
-                <span>more</span>
+                <span></span>
               </div>
               <div class="categroy-item">
                 <Badge
@@ -77,7 +77,7 @@
             <div class="article-lable">
               <div class="title">
                 <Icon type="ios-keypad" /> 文章标签
-                <span>more</span>
+                <span></span>
               </div>
               <Tag
                 class="tag"
@@ -91,7 +91,7 @@
             <div class="time-article">
               <div class="title">
                 <Icon type="ios-timer" /> 最近文章
-                <span>more</span>
+                <span></span>
               </div>
               <div
                 class="ItemList"
@@ -427,7 +427,7 @@ export default {
           width: 24%;
           border-top-right-radius: 5px;
           border-bottom-right-radius: 5px;
-          background: deepskyblue;
+          background: #5dbe8a;
           color: white;
           height: 32px;
           font-size: 13px;

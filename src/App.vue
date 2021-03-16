@@ -12,7 +12,12 @@ import Index from './views/index.vue'
   }
 })
 export default class App extends Vue{
-
+  mounted(){
+    (this as any).$Message.config({
+    top: 70,
+    duration: 2
+});
+  }
 }
 </script>
 <style lang="scss">

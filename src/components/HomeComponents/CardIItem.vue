@@ -40,6 +40,7 @@
   </div>
 </template>
 <script>
+import moment from "moment";
   export default {
     name:'carditem',
     props:{
@@ -92,7 +93,9 @@
     },
     filters:{
       timeFilter(V) {
-        return V.toString().slice(0,10)
+        // return V.toString().slice(0,10)
+      return moment(V).format("YYYY-MM-DD");
+
       }
     },
     methods: {
@@ -240,7 +243,7 @@
           }
         }
         img {
-          width: 92%;
+          width: 60%;
           margin: 0;
           margin:0 1rem;
         }

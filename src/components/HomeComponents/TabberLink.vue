@@ -30,7 +30,7 @@ export default {
           path: "https://github.com/tanwenchaoya",
         },
         { name: "登陆 / 注册", imageURL: "md-contact", path: "/login" },
-        {name:"写文章",imageURL:"ios-brush",path:"/admin/articlePublish"},
+        {name:"写文章",imageURL:"ios-brush",path:"/artConfig/articlePublish"},
         {name:"我的文章",imageURL:"ios-book",path:"/myArticle"},
 
       ],

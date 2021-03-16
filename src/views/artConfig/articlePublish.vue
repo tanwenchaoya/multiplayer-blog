@@ -3,7 +3,7 @@
     <div v-if="!username" style="text-align:center;padding-top:8rem;">
               糟糕，您还没有登陆检测不到信息! ~§(*￣▽￣*)§~
             </div>
-    <div class="container">
+    <div class="container" v-else>
       <h2><i class="iconfont icon-wenzhang"></i> 文章内容编辑与发表</h2>
       <p><i class="iconfont icon-lianjie"></i> 文章标题:</p>
       <Input
@@ -77,7 +77,11 @@ export default {
         lable: "",
         categroy: "",
       },
+      username:''
     };
+  },
+  mounted(){
+    this.username = localStorage.getItem('username');
   },
   computed: {
     articleImageUpload() {

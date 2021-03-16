@@ -22,12 +22,12 @@
           ></el-input>
         </el-col>
         <el-col :span="7" id="col-captcha">
-          <div v-html="codeUrl"
-                class="captcha"
-                ref="captchaImage"
-                @click="undateCaptcha"
-              >
-              </div>
+          <div
+            v-html="codeUrl"
+            class="captcha"
+            ref="captchaImage"
+            @click="undateCaptcha"
+          ></div>
         </el-col>
       </el-row>
     </el-form-item>
@@ -40,7 +40,7 @@
 <script lang="ts">
 import { Vue, Component, Ref } from "vue-property-decorator";
 import { ElForm } from "element-ui/types/form";
-import { registerUser,getImageCode } from "../../api/index";
+import { registerUser, getImageCode } from "../../api/index";
 @Component({
   name: "NormalRegister",
   components: {},
@@ -105,27 +105,37 @@ export default class NormalRegister extends Vue {
           .then((response: any) => {
             console.log(response);
             if (response.data.status === 200) {
-                (this as any).$message.success(response.data.message);
+              (this as any).$message.success(response.data.message);
+              this.form.resetFields();
+
               this.$router.push("/login");
             } else {
               (this as any).$message.error(response.data.message);
+              this.form.resetFields();
+
               this.undateCaptcha();
             }
           })
           .catch((err: any) => {
             (this as any).$message.error(err.message);
+            this.form.resetFields();
+
             this.undateCaptcha();
           });
       } else {
+        this.form.resetFields();
+
         (this as any).$message.error("数据格式不正确");
       }
     });
   }
   @Ref() readonly captchaImage!: HTMLImageElement;
   private undateCaptcha() {
-    getImageCode(Math.random()).then((res:any)=>{
-      res.status=== 200 ? this.codeUrl = res.data:(this as any).$message.error("验证码获取失败");
-    })
+    getImageCode(Math.random()).then((res: any) => {
+      res.status === 200
+        ? (this.codeUrl = res.data)
+        : (this as any).$message.error("验证码获取失败");
+    });
   }
   public resetForm() {
     this.form.resetFields();

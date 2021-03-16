@@ -88,17 +88,21 @@
                         if (data.data.status === 200){
                             (this as any).$message.success(data.data.message);
                             (this as any).$router.push('/login')
+                            this.form.resetFields();
                         }else {
                             (this as any).$message.error(data.message);
+                            this.form.resetFields();
                             (this as any).undateCaptcha();
                         }
 
                     })
                         .catch((err)=>{
                             (this as any).$message.error(err.message);
+                            this.form.resetFields();
                             (this as any).undateCaptcha();
                         })
                 }else {
+                    this.form.resetFields();
                     (this as any).$message.error("数据格式不正确");
                 }
             })

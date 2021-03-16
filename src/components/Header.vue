@@ -28,3 +28,6 @@ import LogoContent from './HomeComponents/LogoContent.vue'
   }
 
 </script>
+<style lang="scss" scoped>
+
+</style>
