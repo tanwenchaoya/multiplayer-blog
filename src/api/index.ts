@@ -9,6 +9,9 @@ export const getUserArticle = (data: {}) =>
 export const getImageCode = (data: any) =>
   NetWork.get(`/user/ImageCode?t=${data}`);
 
+//删除文章
+export const deleteArticle = (data: {}) => NetWork.get(`/page/deleteArticle`, data)
+
 export const getUsers = (data: {}) => NetWork.get("/api/v1/users", data);
 export const addNewUser = (data: {}) => NetWork.post("/api/v1/users", data);
 export const deleteUser = (id: string) => NetWork.delete(`/api/v1/users/${id}`);

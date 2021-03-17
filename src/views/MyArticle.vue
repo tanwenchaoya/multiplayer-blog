@@ -38,6 +38,7 @@
             <!-- 文章卡片 -->
             <Card-item
               @changelike="changeliked"
+              @deleteArt="deleteArt"
               v-for="(item, index) in lists"
               :title="item.title"
               :time="item.time"
@@ -70,8 +71,7 @@
 </template>
 
 <script>
-// import { Vue, Component } from "vue-property-decorator";
-import { getUserArticle } from "../api/index";
+import { getUserArticle,deleteArticle} from "../api/index";
 import { getnotedetail, PostMessage, PageSizeChange } from "../components/NetWork/request";
 
 import CardItem from "../components/HomeComponents/CardIItem";
@@ -94,19 +94,15 @@ export default {
     let username = localStorage.getItem("username");
     this.username = username ? username.replaceAll('"', "") : "";
     if (this.username) {
-      // this.getArticle();
-    this.Pagechange(1);
-
+      this.Pagechange(1);
     }
     
   },
   methods: {
     Pagechange(index) {
       getUserArticle({ token: this.username,page:index }).then((data) => {
-        console.log(data)
         if (data.data.status === 200) {
-          // this.lists = [...data.data.message,...data.data.message];
-          
+          // this.lists = [...data.data.message,...data.data.message];    
           this.lists = data.data.message.data
           this.count = data.data.message.count
         }
@@ -145,6 +141,12 @@ export default {
         // this.$store.commit('LoadingTitleChange', {isshow: false, title: ''})
       });
     },
+    deleteArt(id){
+      deleteArticle({article_id:id})
+      .then(res=>{
+
+      })
+    }
   },
 };
 </script>
@@ -159,7 +161,7 @@ export default {
     justify-content: center;
   }
   .login-article {
-    margin: 1rem 0;
+    margin: 1rem auto;
     width: 100%;
     display: flex;
     align-items: center;

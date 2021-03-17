@@ -106,7 +106,6 @@
                 </span>
               </div>
             </div>
-            <!-- <Music /> -->
             <!-- 交友信息区 -->
             <my-makefriends style="margin-right: 1rem;" />
           </div>
@@ -118,7 +117,6 @@
 <script>
 import { getnotedetail, PostMessage, PageSizeChange } from "../NetWork/request";
 import CardItem from "./CardIItem";
-import Music from "./Music";
 import myMakefriends from "./MyMakefriend";
 import moment from "moment";
 import debounce from "../debounce/debounce";
@@ -164,7 +162,7 @@ export default {
       ]
     };
   },
-  components: { CardItem, myMakefriends, Music },
+  components: { CardItem, myMakefriends },
   filters: {
     dateFilter(V) {
       return moment(V).format("YYYY-MM-DD");

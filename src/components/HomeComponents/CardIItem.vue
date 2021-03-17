@@ -14,7 +14,7 @@
             <span :style="{background: ballColor[index]}" v-for="(item, index) in 3" :key="index"></span>
           </div>
           <!-- 文章标题 -->
-           <p class="title"><i class="iconfont icon-lianjie"></i>  {{title}}</p>
+           <p class="title"><i class="iconfont icon-lianjie"></i>{{title}}</p>
             <!-- 文章简介 -->
             <p v-html="content" class="content"></p>
             <!-- 文章发布时间，点赞数，访问量 -->
@@ -26,7 +26,7 @@
               class="iconfont icon-dianzan"
               :class="{likeStyle:liked(id)}"
               ></i>
-              </span><span style="margin-right:0.5rem">{{like}}</span>
+              <span style="margin-right:0.5rem">{{like}}</span>
               <i class="iconfont icon-pinglun"></i><span>{{accessPulish_count}}</span>
               <i class="iconfont icon-fangwen"></i><span>{{visited}}</span>
             </p>
@@ -35,8 +35,12 @@
             <div class="tags">
               <Tag color="cyan">{{categroy}}</Tag>
               <Tag :color="bgColor[index]" v-for="(item,index) in lablesList" :key="index">{{item}}</Tag>
-      </div>
-    </Card>
+            </div>
+            <div class="card-button" v-if="$route.path.includes('myArticle')">
+              <el-button type="danger" size="mini" @click="deleteArticle">删除</el-button>
+              <el-button type="primary" size="mini">更新文章</el-button>
+            </div>
+        </Card>
   </div>
 </template>
 <script>
@@ -115,6 +119,9 @@ import moment from "moment";
            this.$Message.error("请先去登陆再来点赞噢小主！(ノへ￣、)")
         }
       },
+      deleteArticle(){
+        this.$emit('deleteArt',this.article_id)
+      }
    },
    computed:{
       liked() {
@@ -207,6 +214,12 @@ import moment from "moment";
             cursor: pointer;
           }
         }
+      }
+      .card-button{
+        margin: 10px 0 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
     .card:hover {
