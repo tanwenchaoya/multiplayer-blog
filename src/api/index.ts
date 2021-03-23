@@ -11,6 +11,10 @@ export const getImageCode = (data: any) =>
 
 //删除文章
 export const deleteArticle = (data: {}) => NetWork.get(`/page/deleteArticle`, data)
+//获取要更新的文章信息
+export const getUpdateArticle = (data: {}) =>
+  NetWork.get("/note/getArticleInfo", data);
+export const editorArticle = (data: {}) => NetWork.post(`/note/editorArticle`, data)
 
 export const getUsers = (data: {}) => NetWork.get("/api/v1/users", data);
 export const addNewUser = (data: {}) => NetWork.post("/api/v1/users", data);

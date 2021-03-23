@@ -94,7 +94,7 @@ export default class NormalRegister extends Vue {
     getImageCode("1").then((res: any) => {
       res.status === 200
         ? (this.codeUrl = res.data)
-        : (this as any).$message.error("验证码获取失败");
+        : (this as any).$Message.error("验证码获取失败");
     });
   }
   @Ref() readonly form!: ElForm;
@@ -105,19 +105,19 @@ export default class NormalRegister extends Vue {
           .then((response: any) => {
             console.log(response);
             if (response.data.status === 200) {
-              (this as any).$message.success(response.data.message);
+              (this as any).$Message.success(response.data.message);
               this.form.resetFields();
 
               this.$router.push("/login");
             } else {
-              (this as any).$message.error(response.data.message);
+              (this as any).$Message.error(response.data.message);
               this.form.resetFields();
 
               this.undateCaptcha();
             }
           })
           .catch((err: any) => {
-            (this as any).$message.error(err.message);
+            (this as any).$Message.error(err.message);
             this.form.resetFields();
 
             this.undateCaptcha();
@@ -125,7 +125,7 @@ export default class NormalRegister extends Vue {
       } else {
         this.form.resetFields();
 
-        (this as any).$message.error("数据格式不正确");
+        (this as any).$Message.error("数据格式不正确");
       }
     });
   }
@@ -134,7 +134,7 @@ export default class NormalRegister extends Vue {
     getImageCode(Math.random()).then((res: any) => {
       res.status === 200
         ? (this.codeUrl = res.data)
-        : (this as any).$message.error("验证码获取失败");
+        : (this as any).$Message.error("验证码获取失败");
     });
   }
   public resetForm() {

@@ -142,9 +142,19 @@ export default {
       });
     },
     deleteArt(id){
+      console.log(id)
       deleteArticle({article_id:id})
       .then(res=>{
+        console.log(res)
+        if(res.data.status === 200){
+          this.$Message.success(res.data.message);
+          this.Pagechange(1)
+        }else{
+        this.$Message.error(res.data.message)
 
+        }
+      }).catch(err=>{
+        this.$Message.error('检查一下网络哦！')
       })
     }
   },

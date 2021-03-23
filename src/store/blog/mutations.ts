@@ -14,4 +14,7 @@ export const mutations: MutationTree<BlogState> = {
     state.LoadingTitle = data.title;
     state.LoadingShow = data.isshow;
   },
+  updateArticle(state, articleId) {
+    state.updateArticleId = articleId;
+  }
 };

@@ -37,8 +37,14 @@
               <Tag :color="bgColor[index]" v-for="(item,index) in lablesList" :key="index">{{item}}</Tag>
             </div>
             <div class="card-button" v-if="$route.path.includes('myArticle')">
-              <el-button type="danger" size="mini" @click="deleteArticle">删除</el-button>
-              <el-button type="primary" size="mini">更新文章</el-button>
+              <!-- <el-button type="danger" size="mini" @click="deleteArticle">删除</el-button> -->
+              <el-popconfirm
+                title="确定删除该文章码？"
+                @confirm='deleteArticle'
+              >
+                <el-button slot="reference" size="mini"  type="danger">删除</el-button>
+              </el-popconfirm>
+              <el-button type="primary" size="mini" class="update-article" @click="updateArticle">更新文章</el-button>
             </div>
         </Card>
   </div>
@@ -121,6 +127,10 @@ import moment from "moment";
       },
       deleteArticle(){
         this.$emit('deleteArt',this.article_id)
+      },
+      updateArticle(){
+        this.$store.dispatch('blog/updateArticle',{articleId:this.article_id});
+        this.$router.push('/artConfig/articlePublish');
       }
    },
    computed:{
@@ -220,6 +230,9 @@ import moment from "moment";
         display: flex;
         align-items: center;
         justify-content: center;
+        .update-article{
+          margin-left: 20px;
+        }
       }
     }
     .card:hover {

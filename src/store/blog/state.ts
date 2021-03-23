@@ -6,4 +6,5 @@ export const state: BlogState = {
   Color: "#333",
   LoadingShow: false,
   LoadingTitle: "正在加载请稍后...",
+  updateArticleId:''
 };

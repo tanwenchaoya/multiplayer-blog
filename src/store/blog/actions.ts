@@ -3,5 +3,8 @@ import { ActionTree } from "vuex";
 import { RootState } from "../types";
 
 export const actions: ActionTree<BlogState, RootState> = {
-  fetchData({ commit }): void {},
+  fetchData({ commit }): void { },
+  updateArticle({ commit },{articleId}): void{
+    commit('updateArticle',articleId)
+  }
 };

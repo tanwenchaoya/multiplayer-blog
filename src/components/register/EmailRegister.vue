@@ -86,24 +86,24 @@
                 if (flag){
                     registerUser(this.registerData).then((data:any)=>{
                         if (data.data.status === 200){
-                            (this as any).$message.success(data.data.message);
+                            (this as any).$Message.success(data.data.message);
                             (this as any).$router.push('/login')
                             this.form.resetFields();
                         }else {
-                            (this as any).$message.error(data.message);
+                            (this as any).$Message.error(data.message);
                             this.form.resetFields();
                             (this as any).undateCaptcha();
                         }
 
                     })
                         .catch((err)=>{
-                            (this as any).$message.error(err.message);
+                            (this as any).$Message.error(err.message);
                             this.form.resetFields();
                             (this as any).undateCaptcha();
                         })
                 }else {
                     this.form.resetFields();
-                    (this as any).$message.error("数据格式不正确");
+                    (this as any).$Message.error("数据格式不正确");
                 }
             })
         }
@@ -113,13 +113,13 @@
                 console.log(data)
                 if (data.data.status === 200){
                     console.log(111111111111);
-                    (this as any).$message.success('验证码已经发送');
+                    (this as any).$Message.success('验证码已经发送');
                 }else {
-                    (this as any).$message.error(data.data.error);
+                    (this as any).$Message.error(data.data.error);
                 }
             })
             .catch((err)=>{
-                (this as any).$message.error(err);
+                (this as any).$Message.error(err);
             })
         }
         public resetForm(){

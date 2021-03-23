@@ -52,7 +52,7 @@
       />
       <div class="event-Button">
         <Button @click.native="handelPublish" type="primary">发表</Button>
-        <Button type="default">取消</Button>
+        <Button type="default" @click="cancelPublish">取消</Button>
       </div>
     </div>
   </div>
@@ -62,6 +62,7 @@
 import { mavonEditor } from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 import { PostMessage } from "@/components/NetWork/request";
+import {getUpdateArticle,editorArticle} from "@/api/index.ts"
 export default {
   name: "articlePublish",
   components: {
@@ -77,16 +78,26 @@ export default {
         lable: "",
         categroy: "",
       },
-      username:''
+      username:'',
+      articleId:"",
     };
+  },
+  created(){
+     this.getCurrentArticle()
   },
   mounted(){
     this.username = localStorage.getItem('username');
+   
   },
   computed: {
     articleImageUpload() {
-      console.log(this.$store.state.blog.baseURL);
       return `${this.$store.state.blog.baseURL}/upload/imageUpload`;
+    },
+    currentArticleId(){
+       return this.$store.state.blog.updateArticleId
+      // if(this.$store.state.blog.updateArticleId){
+      //   console.log(123123)
+      // }
     },
   },
   methods: {
@@ -113,16 +124,71 @@ export default {
       obj.username = username
       const path = this.articleDate.lable + Math.floor(Math.random() * 2000000);
       obj.articlePath = path;
-      PostMessage("/note/articlePublish", obj).then((res) => {
-        if (res.data.err == 0) {
-          this.$router.push("/article");
-          this.$Message.success(res.data.message);
-        } else {
-          this.$Message.error(res.data.message);
-        }
-      });
+      if(this.articleId){
+        obj.article_id = this.articleId;
+        editorArticle(obj).then(res=>{
+          if(res.data.status === 200){
+            this.$Message.success(res.data.message);
+            this.$store.dispatch('blog/updateArticle',{articleId:''});
+            this.$router.push('/myArticle')
+             
+          }
+        }).catch(err=>{
+          this.$Message.error("检查一下网络吧!");
+
+        })
+      }else{
+        PostMessage("/note/articlePublish", obj).then((res) => {
+          if (res.data.err == 0) {
+            this.$router.push("/article");
+            this.$Message.success(res.data.message);
+          } else {
+            this.$Message.error(res.data.message);
+          }
+        });
+      }
     },
+    getCurrentArticle(){
+      const id = this.$store.state.blog.updateArticleId
+      if(id){
+        //获取文章详情
+        getUpdateArticle({id}).then(res=>{
+          console.log(res.data.message[0])
+          const{
+            article_brief,
+            article_categroy,
+            article_id,
+            content,
+            lable,
+            title,
+            article_img
+          } = res.data.message[0];
+          this.articleDate.src = article_img;
+          this.articleDate.brief = article_brief;
+          this.articleDate.categroy = article_categroy;
+          this.articleId = article_id;
+          this.articleDate.content = content;
+          this.articleDate.lable = lable;
+          this.articleDate.title = title
+        })
+      }else{
+        console.log('写新的文章呢')
+      }
+    },
+    cancelPublish(){
+      this.$store.dispatch('blog/updateArticle',{articleId:''});
+      this.$router.push('/myArticle')
+    }
   },
+  watch:{
+    currentArticleId: {
+      handler(newval){
+        console.log(this)
+      },
+      deep:true
+    },
+
+  }
 };
 </script>
 <style lang="scss">

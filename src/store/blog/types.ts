@@ -5,4 +5,5 @@ export interface BlogState {
   Color: string;
   LoadingShow: boolean;
   LoadingTitle: string;
+  updateArticleId: string;
 }

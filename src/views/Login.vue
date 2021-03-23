@@ -70,7 +70,7 @@ export default class Login extends Vue {
   private codeUrl:string = ""
   mounted(){
     getImageCode('').then((res:any)=>{
-      res.status=== 200 ? this.codeUrl = res.data:(this as any).$message.error("验证码获取失败");
+      res.status=== 200 ? this.codeUrl = res.data:(this as any).$Message.error("验证码获取失败");
     })
   }
   private validateName = (rule: any, value: string, callback: any) => {
@@ -125,31 +125,31 @@ export default class Login extends Vue {
           .then((response: any) => {
             console.log(response);
             if (response.data.status === 200) {
-              (this as any).$message.success('登录成功喽！');
+              (this as any).$Message.success('登录成功喽！');
               localStorage.setItem(
                 "username",
                 JSON.stringify(response.data.token)
               );
               this.$router.push("/article");
             } else {
-              (this as any).$message.error(response.data.message);
+              (this as any).$Message.error(response.data.message);
               this.undateCaptcha();
             }
           })
           .catch((err: any) => {
             console.log(err.message);
-            (this as any).$message.error(err.message);
+            (this as any).$Message.error(err.message);
             this.undateCaptcha();
           });
       } else {
-        (this as any).$message.error("数据格式不正确");
+        (this as any).$Message.error("数据格式不正确");
       }
     });
   }
   @Ref() readonly captchaImage!: HTMLImageElement;
   private undateCaptcha() {
     getImageCode(Math.random()).then((res:any)=>{
-      res.status=== 200 ? this.codeUrl = res.data:(this as any).$message.error("验证码获取失败");
+      res.status=== 200 ? this.codeUrl = res.data:(this as any).$Message.error("验证码获取失败");
     })
   }
   private toRegister(){
