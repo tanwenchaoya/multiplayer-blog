@@ -44,6 +44,16 @@ const routes: Array<RouteConfig> = [
     name: "myArticle",
     component: MyArticle
   },
+    {
+    path:'/message',
+    name:'message',
+    component:() => import('../views/LeaveMessage.vue')
+  },
+    {
+    path:'/category',
+    name:'category',
+    component:() => import('../views/category.vue')
+  },
 ];
 
 const router = new VueRouter({

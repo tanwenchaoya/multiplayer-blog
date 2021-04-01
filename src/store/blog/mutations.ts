@@ -2,7 +2,6 @@ import { MutationTree } from "vuex";
 import { BlogState } from "./types";
 export const mutations: MutationTree<BlogState> = {
   updateShow(state, data) {
-    console.log(234);
     state.isshow = data;
   },
   updatefont(state, data) {

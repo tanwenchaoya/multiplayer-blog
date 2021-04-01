@@ -11,7 +11,15 @@
     </keep-alive>
     <Loading class="LoadingStyle" v-show="LoadingShow" />
     <Tab-contorle />
-    <Footer v-if="!$route.path.includes('artConfig')&&!$route.path.includes('login')&&!$route.path.includes('register')" />
+    <Footer 
+    v-if="!$route.path.includes('artConfig')
+    &&!$route.path.includes('login')
+    &&!$route.path.includes('register')
+    &&!$route.path.includes('message')
+     &&!$route.path.includes('category')
+    " 
+    
+    />
   </div>
 </template>
 <script lang="ts">
@@ -32,6 +40,25 @@ const blogModule = namespace('blog')
     light,
     Loading,
   },
+  mounted() {
+    document.onclick = (e:MouseEvent) => {
+      console.log(123123)
+      const target = e.target as HTMLElement
+      if(target.className=='meun iconfont icon-caidan') {
+        this.$store.dispatch('blog/updateShow',{isShow:true});
+      }else if(
+        target.className=='MeunTab' || 
+       target.tagName.toLowerCase()=='img' || 
+        target.className=='ivu-list-item' || 
+        target.className == 'profile'
+        ) {
+        return
+      } else {
+        this.$store.dispatch('blog/updateShow',{isShow:false});
+
+      }
+    }
+  }
 })
 export default class Index extends Vue {
   @blogModule.State('fontColor') public fontColor!:string
@@ -43,6 +70,7 @@ export default class Index extends Vue {
   get TypeChange() {
     return this.fontColor;
   }
+   
 }
 </script>
 

@@ -1,22 +1,16 @@
 <template>
-      <div :class="{show:$store.state.isshow}" class="MeunTab">
+      <div :class="{show:$store.state.blog.isshow}" class="MeunTab">
               <div class="profile">
-                <img width="100" height="100" src="../assets/images/swiper1.jpeg" alt="">
-                <div class="profile">Codelei</div>
+                <!-- <img width="100" height="100" src="../assets/images/swiper1.jpeg" alt=""> -->
+                <div class="profile">programming</div>
             </div>
       <List style="padding-left:1.5rem;">
             <ListItem>
-              <i class="iconfont icon-qq">: 755425595,</i>
-              <i class="iconfont icon-weixin">: x972761675</i>
-              </ListItem>
-            <ListItem>
               <i @click="$router.push('/home')" class="iconfont icon-shouyex"> 首页</i>
             </ListItem>
+            
             <ListItem>
-              <i @click="$router.push('/demo')" class="iconfont icon--"> Demo</i>
-            </ListItem>
-            <ListItem>
-              <i @click="$router.push('/photos')" class="iconfont icon-biaoti"> 云相册</i>
+              <i @click="skip" class="iconfont icon-denglu"> 登陆 / 注册</i>
             </ListItem>
             <ListItem>
               <i @click="$router.push('/message')" class="iconfont icon-liuyan2"> 留言板</i>
@@ -30,9 +24,12 @@
             <ListItem>
               <i @click="$router.push('/profile')" class="iconfont icon-touxiang"> 个人信息</i>
               </ListItem>
-            <ListItem>
-              <i @click="skip" class="iconfont icon-denglu"> 登陆 / 注册</i>
-            </ListItem>
+              <ListItem>
+              <i @click="$router.push('/artConfig/articlePublish')" class="iconfont icon-touxiang"> 写文章</i>
+              </ListItem>
+              <ListItem>
+              <i @click="$router.push('/myArticle')" class="iconfont icon-touxiang"> 我的文章</i>
+              </ListItem>
         </List>
      </div>
 </template>
@@ -47,14 +44,14 @@
     },
     methods: {
         skip() {
-          if(localStorage.getItem('username')) {
-              this.$router.push('/logined')
-              return
-            }
+          // if(localStorage.getItem('username')) {
+          //     this.$router.push('/logined')
+          //     return
+          //   }
             this.$router.push('/login')
         },
         Gogithub() {
-          location.href='https://github.com/Acmenlei'
+          location.href='https://github.com/tanwenchaoya'
         }
     },
   }
@@ -64,7 +61,8 @@
     .MeunTab {
       width:23rem;
       height: 100vh;
-      background: url('../assets/images/wetherSon.jpg') no-repeat center;
+      // background: url('../assets/images/wetherSon.jpg') no-repeat center;
+      background: skyblue;
       background-size: cover;
       position: fixed;
       left: -35rem;
@@ -94,6 +92,7 @@
       }
       .profile{
         text-align: center;
+        margin: 20px 0;
        div{
         text-align: center;
         color: white;
