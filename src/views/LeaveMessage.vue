@@ -38,7 +38,7 @@ import replyOrpublish from '../components/ReplyOrPublish/replyOrpublish'
     methods: {
       Pagechange(index) {
         /* 发起请求 */
-        this.$store.commit('LoadingTitleChange', {isshow: true, title: '正在获取留言信息~'})
+        // this.$store.commit('LoadingTitleChange', {isshow: true, title: '正在获取留言信息~'})
         PageSizeChange('/page/pageSize',{page:index})
         .then(res => {
           if(res.data.err == 0) {
@@ -48,7 +48,7 @@ import replyOrpublish from '../components/ReplyOrPublish/replyOrpublish'
           } else {
             this.$Message.error("网络出错了,(ノへ￣、)！")
           }
-           this.$store.commit('LoadingTitleChange', {isshow: false, title: ''})
+          //  this.$store.commit('LoadingTitleChange', {isshow: false, title: ''})
         })
       },
     }

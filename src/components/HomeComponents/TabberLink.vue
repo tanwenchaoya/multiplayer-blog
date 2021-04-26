@@ -23,7 +23,7 @@ export default {
           path: "/article",
         },
         { name: "个人信息", imageURL: "md-person", path: "/profile" },
-        { name: "留言板", imageURL: "ios-create", path: "/message" },
+        { name: "问答", imageURL: "ios-create", path: "/message" },
         {
           name: "GitHub",
           imageURL: "logo-github",

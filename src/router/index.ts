@@ -8,13 +8,18 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "home",
+    name: "index",
     redirect: "/article",
   },
   {
     path: "/article",
     name: "article",
     component: Article
+  },
+  {
+    path: "/home",
+    name: "home",
+    component: () => import("../views/Center.vue")
   },
   {
     path: "/login",
