@@ -2,7 +2,7 @@
   <div id="index" :class="{ adminCssStyle: $route.path.includes('admin') }">
     <div class="moon" v-if="!$route.path.includes('admin')&&!$route.path.includes('login')"></div>
     <Header
-      v-if="!$route.path.includes('article1')&&!$route.path.includes('home')"
+      v-if="!$route.path.includes('article1')&&!$route.path.includes('home')&&!$route.path.includes('admin')"
       @click="changeBG"
       class="header active"
     />
@@ -17,6 +17,7 @@
     &&!$route.path.includes('register')
     &&!$route.path.includes('message')
      &&!$route.path.includes('category')
+     &&!$route.path.includes('admin')
     " 
     
     />

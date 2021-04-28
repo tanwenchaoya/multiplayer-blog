@@ -9,12 +9,10 @@
         <Icon type="md-laptop" /> <a href="https://www.jianshu.com/u/86c6cd3f6ee0">tanwenchao's jianshu</a>
         </TabPane>
         <TabPane label="联系方式" name="name2">
-          <i class="iconfont icon-qq" style="color:skyblue;"></i>:1781104182
-          <i class="iconfont icon-weixin" style="color:green;"></i>:t18834131995
           <br>
-          🙆‍♂️ 有问题欢迎小伙伴来学习讨论~
+          大家一起来讨论哦
           <br>
-          博客文章内容主要就是我在开发中遇到的一些常见的问题，记录下来让自己有个印象，应该也可以帮到你们，欢迎你们的光临，多多支持，over~
+          今天也不要忘记写博客哦！！！
         </TabPane>
       </Tabs>
   </div>
